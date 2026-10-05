@@ -17,8 +17,9 @@ describe('ipc contracts', () => {
       'update:quit-and-install',
       'licensing:get-status',
       'licensing:activate',
+      'licensing:request-reauthorization',
+      'licensing:confirm-rebind',
       'licensing:get-entitlements',
-      'database:query',
       'settings:get',
       'settings:set',
     ])

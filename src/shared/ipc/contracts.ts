@@ -9,6 +9,9 @@ import type {
 } from '../licensing/contracts'
 import type { AppSettings, SettingsKey } from '../settings/types'
 import type { UpdateErrorPayload, UpdateStateEvent, VersionInfo } from '../types/update'
+import type { LabInvokeContract } from '../lab/contracts'
+import type { LabSnapshot } from '../lab/contracts'
+import { labChannels } from '../lab/contracts'
 
 export const ipcInvokeChannels = {
   appGetInfo: 'app:get-info',
@@ -25,7 +28,6 @@ export const ipcInvokeChannels = {
   licensingRequestReauthorization: 'licensing:request-reauthorization',
   licensingConfirmRebind: 'licensing:confirm-rebind',
   licensingGetEntitlements: 'licensing:get-entitlements',
-  databaseQuery: 'database:query',
   settingsGet: 'settings:get',
   settingsSet: 'settings:set',
 } as const
@@ -80,15 +82,6 @@ export type LicensingConfirmRebindResponse = LicensingActivationResponse
 
 export type LicensingEntitlementsPayload = LicenseEntitlementsRequest
 
-export interface DatabaseQueryPayload {
-  sql: string
-  params?: unknown[]
-}
-
-export interface DatabaseQueryResult {
-  rows: unknown[]
-}
-
 export type SettingsGetRequest = {
   key: SettingsKey
 }
@@ -102,7 +95,7 @@ export type SettingsValuePayload = {
 
 export type SettingsGetResponse = SettingsValuePayload
 
-export interface IpcInvokeContract {
+export interface IpcInvokeContract extends LabInvokeContract {
   [ipcInvokeChannels.appGetInfo]: {
     request: void
     response: AppInfoPayload
@@ -159,10 +152,6 @@ export interface IpcInvokeContract {
     request: LicensingEntitlementsPayload
     response: LicenseEntitlementsResult
   }
-  [ipcInvokeChannels.databaseQuery]: {
-    request: DatabaseQueryPayload
-    response: DatabaseQueryResult
-  }
   [ipcInvokeChannels.settingsGet]: {
     request: SettingsGetRequest
     response: SettingsGetResponse
@@ -180,4 +169,5 @@ export interface IpcEventContract {
   [ipcEventChannels.updateError]: UpdateErrorPayload
   [ipcEventChannels.updateDownloadProgress]: ProgressInfo
   [ipcEventChannels.updateDownloaded]: void
+  [labChannels.changed]: LabSnapshot
 }

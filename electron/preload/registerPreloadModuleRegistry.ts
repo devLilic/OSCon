@@ -1,7 +1,7 @@
 import type { AppConfig } from '../../config/types'
 import { registerPreloadModules } from '../../src/shared/modules/registry'
 import { createAppApiPreloadModule } from './modules/createAppApiPreloadModule'
-import { createDatabaseApiPreloadModule } from './modules/createDatabaseApiPreloadModule'
+import { createLabApiPreloadModule } from './modules/createLabApiPreloadModule'
 import { createI18nApiPreloadModule } from './modules/createI18nApiPreloadModule'
 import { createLicensingApiPreloadModule } from './modules/createLicensingApiPreloadModule'
 import { createSettingsApiPreloadModule } from './modules/createSettingsApiPreloadModule'
@@ -14,8 +14,8 @@ export function registerPreloadModuleRegistry(config: AppConfig) {
       createUpdateApiPreloadModule(),
       createI18nApiPreloadModule(),
       createLicensingApiPreloadModule(),
-      createDatabaseApiPreloadModule(),
       createSettingsApiPreloadModule(),
+      createLabApiPreloadModule(),
     ],
     { config },
   )

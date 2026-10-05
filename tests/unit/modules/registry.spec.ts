@@ -5,7 +5,7 @@ import type { MainModule, PreloadModule, RendererModule } from '../../../src/sha
 import { loadConfig } from '../../../config/loadConfig'
 
 function createConfig(overrides?: Partial<AppConfig>): AppConfig {
-  const base = loadConfig('development', {})
+  const base = loadConfig('development', { APP_FEATURE_I18N: 'false' })
 
   return {
     ...base,
@@ -29,7 +29,7 @@ describe('module registry', () => {
   it('resolves enabled modules from config', () => {
     const config = createConfig({
       features: {
-        ...loadConfig('development', {}).features,
+        ...loadConfig('development', { APP_FEATURE_I18N: 'false' }).features,
         autoUpdate: true,
       },
     })
@@ -49,7 +49,7 @@ describe('module registry', () => {
   it('registers only enabled main and preload modules', async () => {
     const config = createConfig({
       features: {
-        ...loadConfig('development', {}).features,
+        ...loadConfig('development', { APP_FEATURE_I18N: 'false' }).features,
         autoUpdate: true,
       },
     })
@@ -82,7 +82,7 @@ describe('module registry', () => {
   it('resolves renderer modules conditionally', () => {
     const config = createConfig({
       features: {
-        ...loadConfig('development', {}).features,
+        ...loadConfig('development', { APP_FEATURE_I18N: 'false' }).features,
         autoUpdate: false,
         logging: true,
       },

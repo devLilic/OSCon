@@ -1,9 +1,9 @@
 {
-  "name": "default-electron-app-template",
-  "productName": "Default Electron App",
+  "name": "oscon",
+  "productName": "OSCon",
   "version": "0.1.0",
   "main": "dist-electron/main/index.js",
-  "description": "Template for modular Electron desktop applications.",
+  "description": "Intermediar desktop OSC pentru template-urile LiveBoard și editorul Plasma.",
   "author": "devLilic13",
   "license": "MIT",
   "private": true,
@@ -15,7 +15,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
+    "build": "tsc && vite build && electron-builder --publish never",
     "init:starter": "node scripts/init/run.mjs",
     "preview": "vite preview",
     "test": "npm run test:unit",
@@ -23,8 +23,6 @@
     "test:unit:watch": "vitest --config vitest.config.ts"
   },
   "dependencies": {
-    "better-sqlite3": "^12.8.0",
-    "drizzle-orm": "^0.45.1",
     "electron-updater": "^6.3.9",
     "i18next": "^25.10.10",
     "react": "^18.3.1",
@@ -33,7 +31,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.48.2",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",

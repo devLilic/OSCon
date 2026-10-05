@@ -1,8 +1,6 @@
 import type { AppConfig } from '../../../config/types'
 import type {
   AppInfoPayload,
-  DatabaseQueryPayload,
-  DatabaseQueryResult,
   I18nLanguagePayload,
   I18nResourcePayload,
   I18nSupportedLanguagesPayload,
@@ -19,6 +17,7 @@ import type { LicenseEntitlementsResult } from '@/shared/licensing/contracts'
 import type { UpdatePreferences, UiPreferences } from '@/shared/settings/types'
 import type { ProgressInfo } from 'electron-updater'
 import type { UpdateErrorPayload, UpdateStateEvent, VersionInfo } from './update'
+import type { LabApi } from '@/shared/lab/contracts'
 
 declare global {
   interface Window {
@@ -52,9 +51,7 @@ declare global {
       confirmRebind: (payload: LicensingConfirmRebindPayload) => Promise<LicensingConfirmRebindResponse>
       getEntitlements: (payload: LicensingEntitlementsPayload) => Promise<LicenseEntitlementsResult>
     }
-    databaseApi: {
-      query: (payload: DatabaseQueryPayload) => Promise<DatabaseQueryResult>
-    }
+    labApi: LabApi
     settingsApi: {
       getLanguage: () => Promise<import('../../../config/types').AppLanguage | null>
       setLanguage: (language: import('../../../config/types').AppLanguage | null) => Promise<import('../../../config/types').AppLanguage | null>

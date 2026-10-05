@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "settings": {
+    "jsonDelayMs": 250,
+    "personDurationMs": 5000,
+    "headlineTransitionGapMs": 100,
+    "contentNames": {
+      "headline": "L3_HEADLINE",
+      "name": "L3_NAME"
+    },
+    "headline": {
+      "mode": "external-txt",
+      "buffers": {
+        "A": {
+          "contentName": "01_X_Titlu1",
+          "kickerPath": "%OSCON_OUTPUT%\\PA_Supratitlu_1.txt",
+          "titlePath": "%OSCON_OUTPUT%\\PA_Title_1.txt"
+        },
+        "B": {
+          "contentName": "01_x_Titlu2",
+          "kickerPath": "%OSCON_OUTPUT%\\PA_Supratitlu_2.txt",
+          "titlePath": "%OSCON_OUTPUT%\\PA_Title_2.txt"
+        }
+      }
+    },
+    "personText": {
+      "namePath": "%OSCON_OUTPUT%\\PA_Person_Name.txt",
+      "rolePath": "%OSCON_OUTPUT%\\PA_Person_Role.txt"
+    }
+  }
+}

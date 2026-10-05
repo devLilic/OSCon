@@ -15,3 +15,4 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL
 
 export const preloadPath = path.join(MAIN_DIST, 'preload/index.mjs')
 export const indexHtmlPath = path.join(RENDERER_DIST, 'index.html')
+export const previewHtmlPath = path.join(RENDERER_DIST, 'preview.html')

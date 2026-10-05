@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "settings": {
+    "schemaVersion": 1,
+    "setupConfirmed": false,
+    "enabled": false,
+    "bindAddress": "127.0.0.1",
+    "port": 47834,
+    "allowedOrigins": [
+      "http://plasma.test",
+      "https://plasma.test"
+    ],
+    "receiver": {
+      "host": "127.0.0.1",
+      "port": 501,
+      "addressPrefix": "/lvb/control/"
+    }
+  }
+}

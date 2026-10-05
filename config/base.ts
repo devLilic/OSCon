@@ -2,9 +2,9 @@ import type { AppConfig } from './types'
 
 export const baseConfig: AppConfig = {
   environment: 'development',
-  appName: 'default-electron-app',
+  appName: 'oscon',
   features: {
-    i18n: false,
+    i18n: true,
     autoUpdate: false,
     appProtection: false,
     licensing: false,
@@ -25,7 +25,7 @@ export const baseConfig: AppConfig = {
     },
   },
   i18n: {
-    enabled: false,
+    enabled: true,
     defaultLanguage: 'ro',
     supportedLanguages: ['en', 'ro', 'ru'],
     namespaces: ['common', 'settings', 'updater', 'errors', 'licensing'],

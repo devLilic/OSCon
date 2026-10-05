@@ -64,13 +64,22 @@ export default defineConfig(({ command }) => {
         renderer: {},
       }),
     ],
-    server: process.env.VSCODE_DEBUG && (() => {
-      const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
-      return {
-        host: url.hostname,
-        port: +url.port,
-      }
-    })(),
+    server: {
+      // Electron profiles and packaging output contain transient locked files on Windows.
+      watch: { ignored: ['**/artifacts/**', '**/release/**'] },
+      ...(process.env.VSCODE_DEBUG ? (() => {
+        const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
+        return { host: url.hostname, port: +url.port }
+      })() : {}),
+    },
     clearScreen: false,
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.join(__dirname, 'index.html'),
+          preview: path.join(__dirname, 'preview.html'),
+        },
+      },
+    },
   }
 })

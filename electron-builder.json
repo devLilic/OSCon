@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
-  "appId": "com.example.default-electron-app",
+  "appId": "ro.devlilic.oscon",
   "asar": true,
   "directories": {
     "output": "release/${version}"
@@ -9,15 +9,15 @@
     "dist-electron",
     "dist"
   ],
+  "extraResources": [
+    {
+      "from": "config/defaults",
+      "to": "defaults",
+      "filter": ["playback.json", "connection.json"]
+    }
+  ],
   "extraMetadata": {
     "main": "dist-electron/main/index.js"
-  },
-  "mac": {
-    "artifactName": "${productName}-${version}-${arch}.${ext}",
-    "target": [
-      "dmg",
-      "zip"
-    ]
   },
   "win": {
     "target": [
@@ -35,13 +35,5 @@
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false
-  },
-  "publish": [
-    {
-      "provider": "github",
-      "owner": "YOUR_GITHUB_OWNER",
-      "repo": "YOUR_RELEASE_REPO",
-      "releaseType": "release"
-    }
-  ]
+  }
 }

@@ -5,12 +5,15 @@ import { ipcEventChannels } from '../../../src/shared/ipc/contracts'
 
 export async function createMainWindow() {
   const window = createSecureBrowserWindow({
-    title: 'Main window',
+    title: 'OSCon',
+    width: 1280, height: 900, minWidth: 960, minHeight: 640,
+    backgroundColor: '#0a1018',
+    show: process.env.OSCON_SMOKE !== '1',
   })
 
   if (VITE_DEV_SERVER_URL) {
     await window.loadURL(VITE_DEV_SERVER_URL)
-    window.webContents.openDevTools()
+    if (process.env.OSCON_SMOKE !== '1') window.webContents.openDevTools()
   } else {
     await window.loadFile(indexHtmlPath)
   }
